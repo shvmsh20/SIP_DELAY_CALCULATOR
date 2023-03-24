@@ -35,15 +35,15 @@ function GraphArea(props){
 
   return (
     <div className="rightContainer">
-      <p className="graph-text">
+      <p className="graphText">
         After {props.investmentPeriod} years, you will have
         <br />
-        <span className="totalamount">
+        <span className="totalAmount">
           ₹ {toIndianRupees(props.graphData.delayedStart)}
         </span>
         <br />
         That's{" "}
-        <span className="potentialamount">
+        <span className="potentialAmount">
           ₹ {toIndianRupees(props.graphData.startToday)}
         </span>{" "}
         as potential capital gains <br /> on your investment of
@@ -54,7 +54,7 @@ function GraphArea(props){
       </p>
       <ResponsiveContainer height="40%" width="80%" aspect={1.3}>
         <BarChart
-          className="bar-graph"
+          className="barGraph"
           data={Array}
           width={200}
           max-height={200}

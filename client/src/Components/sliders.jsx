@@ -193,19 +193,15 @@ const Input2 = styled(MuiInput)`
 `;
 
 function SliderArea(props) {
-  //const [inputVal, setInputVal] = useState(props.min);
-  //const [invalidInputStatus, setInvalidInputStatus] = useState(false);
-
-
 
   return (
     <div className="sliders">
       <Box sx={{ width: 500 }}>
-        <Grid className="grid" container>
-          <Grid item className="grid-item1">
+        <Grid container className="grid">
+          <Grid item >
             <Typography gutterBottom>{titleArr[props.index]}</Typography>
           </Grid>
-          <Grid item className="grid-item2">
+          <Grid item className="gridItem">
             <Input2
               value={props.inputVal}
               size="small"
@@ -220,7 +216,7 @@ function SliderArea(props) {
             />
           </Grid>
         </Grid>
-        {props.invalidInputStatus && <div className="err-field">Invalid input</div>}
+        {props.invalidInputStatus && <div className="errField">Invalid input</div>}
 
         <Grid container>
           <Grid item xs>

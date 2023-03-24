@@ -1,16 +1,11 @@
 import React from "react";
-import Calculator from "./index";
-import ArrowBackIcon from "@mui/icons-material/ArrowBack";
-import IconButton from "@mui/material/IconButton";
+import Calculator from "../../src/Components/index";
+
 
 function Main() {
   return (
     <div className="rightSideBox">
-      <h4 className="back">
-        <IconButton size={"small"} sx={{ color: "black" }}>
-          <ArrowBackIcon /> Back
-        </IconButton>
-      </h4>
+        <button className="backBtn"><span>&#8592;</span> Back </button>       
       <Calculator />
     </div>
   );

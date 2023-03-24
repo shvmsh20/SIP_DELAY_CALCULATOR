@@ -1,5 +1,5 @@
 import "./Media/CSS/App.css";
-import Main from "./Components/main"
+import Main from "../src/Components/main"
 
 function App() {
   return (
