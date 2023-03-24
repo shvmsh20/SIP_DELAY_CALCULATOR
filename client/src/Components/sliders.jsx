@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import Box from "@mui/material/Box";
 import Slider from "@mui/material/Slider";
 import Typography from "@mui/material/Typography";
@@ -193,53 +193,10 @@ const Input2 = styled(MuiInput)`
 `;
 
 function SliderArea(props) {
-  const [inputVal, setInputVal] = useState(props.min);
-  const [invalidInputStatus, setInvalidInputStatus] = useState(false);
+  //const [inputVal, setInputVal] = useState(props.min);
+  //const [invalidInputStatus, setInvalidInputStatus] = useState(false);
 
-  const handleSliderChange = (event, newValue) => {
-    props.onSliderChange(props.type, newValue);
-    setInvalidInputStatus(false);
-    setInputVal(newValue);
-  };
 
-  const handleInputChange = (event) => {
-    //FrontEnd validations
-
-    const val = event.target.value;
-    
-    if (Number(val) < props.min) {
-      setInputVal(val);
-      props.onSliderChange(props.type, props.min);
-      setInvalidInputStatus(true);
-    
-    }else if (Number(val) > props.max) {
-      setInputVal(val);
-      props.onSliderChange(props.type, props.max);
-      setInvalidInputStatus(true);
-  
-    }else{
-      setInvalidInputStatus(false);
-      setInputVal(val);
-      props.onSliderChange(props.type, Number(val));
-    }
-    
-  };
-
-  const handleBlur = (event) => {
-    setInvalidInputStatus(false);
-
-    const val = event.target.value;
-
-    if (Number(val) < props.min) {
-      props.onSliderChange(props.type, props.min);
-      setInputVal(props.min);
-  
-    }else if (Number(val) > props.max) {
-      props.onSliderChange(props.type, props.max);
-      setInputVal(props.max);
-
-    }
-  };
 
   return (
     <div className="sliders">
@@ -250,10 +207,10 @@ function SliderArea(props) {
           </Grid>
           <Grid item className="grid-item2">
             <Input2
-              value={inputVal}
+              value={props.inputVal}
               size="small"
-              onBlur={handleBlur}
-              onChange={handleInputChange}
+              onBlur={(event)=>props.handleBlur(event, props.type)}
+              onChange={(event)=>props.handleInputChange(event, props.type)}
               inputProps={{
                 step: props.steps,
                 min: props.min,
@@ -263,7 +220,7 @@ function SliderArea(props) {
             />
           </Grid>
         </Grid>
-        {invalidInputStatus && <div className="err-field">Invalid input</div>}
+        {props.invalidInputStatus && <div className="err-field">Invalid input</div>}
 
         <Grid container>
           <Grid item xs>
@@ -276,7 +233,7 @@ function SliderArea(props) {
               step={props.steps}
               marks={labelArr[props.index]}
               value={props.value}
-              onChange={handleSliderChange}
+              onChange={(event, newValue)=>props.handleSliderChange(event, newValue, props.type)}
               aria-labelledby="input-slider"
             />
           </Grid>
