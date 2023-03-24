@@ -6,11 +6,7 @@ import IconButton from "@mui/material/IconButton";
 function Main() {
   return (
     <div className="rightSideBox">
-      <h4 className="back">
-        <IconButton size={"small"} sx={{ color: "black" }}>
-          <ArrowBackIcon /> Back
-        </IconButton>
-      </h4>
+        <button className="backBtn"><span>&#8592;</span> Back </button>       
       <Calculator />
     </div>
   );
